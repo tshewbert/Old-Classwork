@@ -1,0 +1,139 @@
+// This code is all from Lewis/Loftus, except that MagazineList.add
+// has been changed by Craig Persiko to put the magazines in alphabetical order.
+
+
+//*******************************************************************
+//  MagazineRack.java       Author: Lewis/Loftus
+//
+//  Driver to exercise the MagazineList collection.
+//*******************************************************************
+
+public class MagazineRack
+{
+   //----------------------------------------------------------------
+   //  Creates a MagazineList object, adds several magazines to the
+   //  list, then prints it.
+   //----------------------------------------------------------------
+   public static void main (String[] args)
+   {
+      MagazineList rack = new MagazineList();
+
+      rack.add (new Magazine("Time"));
+      rack.add (new Magazine("Woodworking Today"));
+      rack.add (new Magazine("Communications of the ACM"));
+      rack.add (new Magazine("House and Garden"));
+      rack.add (new Magazine("GQ"));
+
+      System.out.println (rack);
+   }
+}
+
+//*******************************************************************
+//  MagazineList.java       Author: Lewis/Loftus
+//
+//  Represents a collection of magazines.
+//*******************************************************************
+
+class MagazineList
+{
+   private MagazineNode list;
+
+   //----------------------------------------------------------------
+   //  Sets up an initially empty list of magazines.
+   //----------------------------------------------------------------
+   public MagazineList()
+   {
+      list = null;
+   }
+
+   //----------------------------------------------------------------
+   //  Creates a new MagazineNode object and adds it to the linked list.
+   //  *** Changed by Craig Persiko to put the magazines in alphabetical order. ***
+   //----------------------------------------------------------------
+   public void add (Magazine mag)
+   {
+      MagazineNode node = new MagazineNode (mag);
+      MagazineNode current = list;
+
+      if (current == null || current.magazine.toString().compareToIgnoreCase(mag.toString()) >= 0)
+      {
+         // add new node to head of list:
+         list = node;
+         list.next = current;
+       }
+      else
+      {
+         // loop while not end of list and current is earlier in alphabet
+         while (current.next != null && current.next.magazine.toString().compareToIgnoreCase(mag.toString()) < 0)
+           current = current.next;
+
+         // we found the place to insert in alphabetic order: after current.
+         node.next = current.next;
+         current.next = node;
+      }
+   }
+
+   //----------------------------------------------------------------
+   //  Returns this list of magazines as a string.
+   //----------------------------------------------------------------
+   public String toString ()
+   {
+      String result = "";
+
+      MagazineNode current = list;
+
+      while (current != null)
+      {
+         result += current.magazine + "\n";
+         current = current.next;
+      }
+
+      return result;
+   }
+
+   //*****************************************************************
+   //  An inner class that represents a node in the magazine list.
+   //  The public variables are accessed by the MagazineList class.
+   //*****************************************************************
+   private class MagazineNode
+   {
+      public Magazine magazine;
+      public MagazineNode next;
+
+      //--------------------------------------------------------------
+      //  Sets up the node
+      //--------------------------------------------------------------
+      public MagazineNode (Magazine mag)
+      {
+         magazine = mag;
+         next = null;
+      }
+   }
+}
+
+//********************************************************************
+//  Magazine.java       Author: Lewis/Loftus
+//
+//  Represents a single magazine.
+//********************************************************************
+
+class Magazine
+{
+   private String title;
+
+   //-----------------------------------------------------------------
+   //  Sets up the new magazine with its title.
+   //-----------------------------------------------------------------
+   public Magazine (String newTitle)
+   {
+      title = newTitle;
+   }
+
+   //-----------------------------------------------------------------
+   //  Returns this magazine as a string.
+   //-----------------------------------------------------------------
+   public String toString ()
+   {
+      return title;
+   }
+}

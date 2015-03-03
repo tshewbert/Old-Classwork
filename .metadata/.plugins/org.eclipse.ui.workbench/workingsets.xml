@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1382474251099_1" label="TimeConversion" name="TimeConversion"/>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1382474281195_2" label="TimeConversio" name="TimeConversio">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TimeConversion/TimeConversion.java" type="1"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1384026276213_3" label="12" name="12">
+<item elementID="=12" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1379438922312_0" label="Window Working Set" name="Aggregate for window 1379438922311"/>
+</workingSetManager>

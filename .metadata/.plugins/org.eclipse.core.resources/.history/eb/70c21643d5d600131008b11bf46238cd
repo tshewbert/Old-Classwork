@@ -1,0 +1,44 @@
+//*******************************************************************
+//  MagazineRack.java       Author: Lewis/Loftus
+//
+//  Driver to exercise the MagazineList collection.
+//*******************************************************************
+
+public class MagazineRack
+{
+   //----------------------------------------------------------------
+   //  Creates a MagazineList object, adds several magazines to the
+   //  list, then prints it.
+   //----------------------------------------------------------------
+   public static void main (String[] args)
+   {    
+      MagazineList rack = new MagazineList();
+      
+      addMagazine = new Label("Add Magazine:");
+      deleteMagazine = new Label("Delete Magazine:");
+
+      add = new TextField(20);
+      add.addActionListener(new AddListener());
+      delete = new TextField(20);
+      delete.addActionListener(new DeleteListener());
+
+      show = new TextArea(20,50);
+
+      list = new Button("List Magazines");
+      list.addActionListener(new ListListener());
+      deleteAll = new Button("Delete All");
+      deleteAll.addActionListener(new DeleteAllListener());
+
+      add(addMagazine);
+      add(add);
+      add(list);
+      add(show);
+      add(deleteMagazine);
+      add(delete);
+      add(deleteAll);
+
+      setBackground(Color.white);
+      setSize(600, 600);
+      
+   }
+}

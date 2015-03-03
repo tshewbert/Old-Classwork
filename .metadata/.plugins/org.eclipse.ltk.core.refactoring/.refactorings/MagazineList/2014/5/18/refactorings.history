@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MagazineList/src/MagazineRack&apos; to &apos;MagazineRack.java&apos;" description="Rename resource &apos;MagazineRack&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/MagazineRack" name="MagazineRack.java" stamp="1398955300629" updateReferences="true"/>
+</session>

@@ -1,0 +1,105 @@
+import java.applet.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MagazineView extends Applet
+{
+	//Variables used in all methods
+	private final int APPLET_WIDTH = 700;
+	private final int APPLET_HEIGHT = 800;
+	private Label hello;
+	private Label addMag;
+	private Label delMag;
+	private Button listAll;
+	private Button delAll;
+	private TextField add;
+	private TextField delete;
+	private TextArea view;
+	private MagazineList rack = new MagazineList();
+	private String enteredText;
+	
+	//Initialize applet
+	public void init()
+	{
+		//Basic view
+		setBackground(Color.LIGHT_GRAY);
+		setSize(APPLET_WIDTH, APPLET_HEIGHT);
+		
+		MagazineList rack = new MagazineList(); //A new MagazineList object
+		
+		//Set up labels to control GUI components
+		hello = new Label("Greetings! Make a list of some fine magazines!");
+		addMag = new Label("Add a magazine:"); 
+		delMag = new Label("Delete a magazine");
+		
+		//Creates an TextArea for user to enter magazine names into the list
+		add = new TextField(30);
+		add.addActionListener(new AddMag());
+		
+		//Creates a button to list the magazines that have been entered by user
+		listAll = new Button("List the Entered Magazines");
+		listAll.addActionListener(new ViewMag());
+		
+		//Creates a TextArea to display the magazine in the list
+		view = new TextArea(30, 70);
+		
+		// Creates a button to delete a single magazine by a user entering the name
+		delete = new TextField(30);
+		delete.addActionListener(new DeleteMag());
+		
+		//Creates a button to delete all the magazines
+		delAll = new Button("Delete all the Magzines in List");
+		delAll.addActionListener(new DeleteAll());
+		
+		//Adds all the stuff to GUI
+		add(hello);
+		add(view);
+		add(addMag);
+		add(add);
+		add(listAll);
+		add(delMag);
+		add(delete);
+		add(delAll);
+	}
+	
+	//The method to add magazines to MagazineList
+	public class AddMag implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			enteredText = add.getText();
+			add.setText("");
+			rack.insert(new Magazine(enteredText));
+		}
+	}
+	
+	//Method to delete the magazine
+	public class DeleteMag implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			enteredText = delete.getText();
+			delete.setText("");
+			rack.delete(new Magazine(enteredText));
+		}
+	}
+	
+	//Lists all the magazines when button is pushed
+	public class ViewMag implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			view.setText(rack.toString());
+		}
+	}
+
+	public class DeleteAll implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			rack.deleteAll();
+			view.setText(rack.toString());
+		}
+	}
+	
+}
